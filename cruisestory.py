@@ -1,54 +1,39 @@
-#choice based cruise adventure story for Mandy
-print("You're going on a cruise with your honey to Bermuda!  You have a choice of what type of cabin to sleep in: Interior of the ship with two separate beds, or a room on the side of the ship with a beautiful porthole window.")
-print("Which do you choose?")
-
-#first program input-work-output
-#convert elevator floors
-#try-except
-inp=input("Europe floor?")
-try:
-    inp1 = int(inp)
-except:
-    inp1 = -1
-if inp1 > -1:
-    usf = int(inp)+1
-    print("US floor", usf)
-else:
-    print("not a number")
-
-
-#my own program
-blks=input("how many blocks to add?")
-print("blocks present:3")
-nblks=int(blks)+3
-print(nblks)
-
-#if conditional statements
-y=input("enter number")
-y2=int(y)
-if y2>2:
-    print("bigger than 2")
-    print("still bigger")
-if y2<2:
-    print("smaller than 2")
-    print("still smaller")
-if y2==2:
-    print("equal to")
-    print("still equal to")
-
-print("hello world")
-
-#hourly rate try/except exercize
-xh = input("Hours:",)
-xr = input("Rate:",)
-
-try:
-    xp = float(xh) * float(xr)
-
-except:
-    print("Error")
-    quit()
-print("Pay",xp)
+# choice based cruise adventure story for Mandy
+print("This is my first program.")
+print("Press 'Enter' to continue...")
 input()
+print("I wrote it for (and to) my wife, whom I love dearly.")
+print("Press 'Enter' to continue...")
+input()
+print("I hope you have as much fun with this as I had writing it!")
+print("Press 'Enter' to continue...")
+input()
+print("Please enter your name to begin:")
+nam = input()
+print("Hello,", nam)
+print("Are you ready for the adventure of a lifetime??")
+print("type 'Y' for Yes, 'N' for No")
+ans = input()
+if ans in ["y", "yes"]:
+    print("Woohooo!!  Let's gooooo!!")
+    print("Press 'Enter' to continue...")
+    input()
+else:
+    print(":(")
+    input()
+print("Your hubby comes to you one day and asks what you want to do for vacation.")
+print("'Babe, do you want to go to the beach for a week?'")
+print("'Or do you want to go on a cruise?'")
+print("Type 'cruise' for a Carnival Cruise, or 'beach' for some sandy fun-in-the-sun.")
+ans = input()
+if ans in ["cruise"]:
+    print("'Good choice on the cruise, honey!', your hubby says.")
+    print("You both fly on American Airlines down to Mobile, AL.")
+    print("This is where your ship is docked!")
+    print("Press 'Enter' to continue...")
+    input()
+if ans in ["beach"]:
+    print("Your hubby's face drops a little.")
+    print("'Are you suuuuure?', he asks.")
 
 
