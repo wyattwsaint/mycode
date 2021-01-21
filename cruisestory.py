@@ -1,4 +1,6 @@
 # choice based cruise adventure story for Mandy
+ubr_drvr = "Lyle"
+lft_drvr = "Cliff"
 print("This is my first program.")
 print("Press 'Enter' to continue...")
 input()
@@ -32,8 +34,24 @@ if ans in ["cruise"]:
     print("This is where your ship is docked!")
     print("Press 'Enter' to continue...")
     input()
+    print("You pack your bags and fly down to Mobile, AL!")
+    print("Press 'Enter' to continue...")
 if ans in ["beach"]:
     print("Your hubby's face drops a little.")
-    print("'Are you suuuuure?', he asks.")
-
-
+    print("'Bummer!'")
+    print("THE END")
+    input()
+    quit()
+print("You arrive at your AirBnB the night before your cruise.")
+print("The next morning, you both walk over a mile to the dock in the sweltering heat")
+print("You come to a BBQ place along the way.  Go inside?")
+print("Press 'y' for Yes or 'n' for No")
+ans = input()
+if ans in ["y", "yes"]:
+    print("You go inside.  It's nice and cool.")
+    input()
+if ans in ["n", "no"]:
+    print("You pass on by, but really regret not going in.")
+    print("THE END")
+    input()
+    quit()
