@@ -73,3 +73,32 @@ if ans in ["y","yes"]:
 if ans in ["n","no"]:
     print("Hubby says, 'Probably a good choice, let's get to the room first.")
     input()
+print("The cruise is awesome!  There's 24-hour food, lounges, and things to do.")
+input()
+print("At one point, you and Wyatt are walking along the 3rd floor on the side of the ship")
+input()
+print("There's a live band playing Motown and they're really good!")
+input()
+print("All of a sudden, there's a ton of people jamming with the band and a dance floor opens up!")
+input()
+ans = ""
+while (ans != "y" and ans != "yes"):
+    ans = input("Your hubby starts to get jiggy with it.  He sees that you desperately want to dance too!  'C'mon babe, let's dance!'  Press 'y' for Yes or 'n' for No").lower()
+    if ans == "y":
+        print("You both go into the middle of the dance floor.  You're the first ones because no one else was brave enough!")
+        input()
+        print("Because you did this, the dance floor immediately fills up.  You dance the night away!")
+        input()
+        print("You're exhausted.  You head back to the room to find champaign and cheesecake waiting for you with a note from the band leader thanking you for starting the dance floor.  Well done!")
+        input()
+    elif ans == "yes":
+        print("You both go into the middle of the dance floor.  You're the first ones because no one else was brave enough!")
+        input()
+        print("Because you did this, the dance floor immediately fills up.  You dance the night away!")
+        input()
+        print("You're exhausted.  You head back to the room to find champaign and cheesecake waiting for you with a note from the band leader thanking you for starting the dance floor.  Well done!")
+        input()
+    else:
+        print("Who are you and what have you done with my wife??")
+        print("Press 'Enter to go back...")
+        input()
