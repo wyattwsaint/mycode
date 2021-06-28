@@ -1,12 +1,8 @@
 package commissionCalc;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -14,209 +10,206 @@ import java.util.stream.Stream;
 
 import javax.swing.JOptionPane;
 
-public class Main {
+public class Application {
 
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
 		BufferedWriter bw = null;
-		
-		String firstName = JOptionPane.showInputDialog("Enter first name: ");
-		String lastName = JOptionPane.showInputDialog("Enter last name: ");
-		String product = JOptionPane.showInputDialog("Enter product: ");
-		String comments = JOptionPane.showInputDialog("Comments: ");
-		String date = JOptionPane.showInputDialog("Date: ");
-		
+
+		System.out.println("Enter first name: ");
+		String firstName = scanner.nextLine();
+		System.out.println("Enter last name: ");
+		String lastName = scanner.nextLine();
+		System.out.println("Enter product: ");
+		String product = scanner.nextLine();
+		System.out.println("Comments: ");
+		String comments = scanner.nextLine();
+		System.out.println("Date: ");
+		String date = scanner.nextLine();
+
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(firstName);
 			bw.newLine();
 			bw.flush();
-			
-		}
-		catch (IOException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-				}
+		}
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(lastName);
 			bw.newLine();
 			bw.flush();
-			
-		}
-		catch (IOException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-				}
+		}
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(product);
 			bw.newLine();
 			bw.flush();
-			
-		}
-		catch (IOException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-				}
+		}
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(comments);
 			bw.newLine();
 			bw.flush();
-			
-		}
-		catch (IOException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(date);
 			bw.newLine();
 			bw.flush();
-		
-			}
-		catch (IOException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-				}
-		
+		}
+
 		System.out.println("Enter book price: ");
-		double book = Double.parseDouble(JOptionPane.showInputDialog("Enter book price:"));
-		
-		double actual = Double.parseDouble(JOptionPane.showInputDialog("Enter actual price:"));
-		
-		double drop = ((book-actual)/book);
-		
-		double commperc = (.48-(drop))/2;
-		
-		if(drop > .48) {
-			JOptionPane.showMessageDialog(null, "Dropped "+100*drop+" %, which is greater than a 48% drop. Diller will sarcastically tell you this later on when you ask why your commission sucks.Commission is "+.02*actual*.7);
-			
-			
+		double book = scanner.nextDouble();
+
+		System.out.println("Enter actual price: ");
+		double actual = scanner.nextDouble();
+
+		double drop = ((book - actual) / book);
+
+		double commperc = (.48 - (drop)) / 2;
+
+		if (drop > .48) {
+			System.out.println("Dropped " + 100 * drop
+					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later on when you ask why your commission sucks.Commission is "
+					+ .02 * actual * .7);
+
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(actual));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
+			}
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(.02*actual*.7));
+				bw.write(String.valueOf(.02 * actual * .7));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
+			}
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
+			}
 		}
-		
-		else if(drop > .44) {
-			JOptionPane.showMessageDialog(null, "Dropped "+100*drop+" %, which is greater than a 44% drop but less than 48%. Commission is "+.02*actual*.7);
-			
+
+		else if (drop > .44) {
+			System.out.println("Dropped " + 100 * drop
+					+ " %, which is greater than a 44% drop but less than 48%. Commission is " + .02 * actual * .7);
+
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(actual));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
-			
+			}
+
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(.02*actual*.7));
+				bw.write(String.valueOf(.02 * actual * .7));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
+			}
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				
-			}
-			catch (IOException e) {
+
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-					}
+			}
 		}
-		
+
 		else {
-		double comm = commperc*actual*.7;
-		JOptionPane.showMessageDialog(null, "Dropped "+100*drop+" %. Commission is "+comm);
-		
-		try {
-			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-			bw.write(String.valueOf(actual));
-			bw.newLine();
-			bw.flush();
-			
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			double comm = commperc * actual * .7;
+			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm);
+
+			try {
+				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
+				bw.write(String.valueOf(actual));
+				bw.newLine();
+				bw.flush();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			try {
+				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
+				bw.write(String.valueOf(comm));
+				bw.newLine();
+				bw.flush();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
+				bw.write(String.valueOf("----"));
+				bw.newLine();
+				bw.flush();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			double value = 0;
+			while (value != 0) {
+				try (Stream<String> lines = Files.lines(Paths.get("custinfo.txt"))) {
+					String firstline = lines.skip(7).findFirst().get();
+					
+					System.out.println(firstline);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-		
-		try {
-			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-			bw.write(String.valueOf(comm));
-			bw.newLine();
-			bw.flush();
-			
+			}
 		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-				}
-		try {
-			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-			bw.write(String.valueOf("----"));
-			bw.newLine();
-			bw.flush();
-			
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-				}
-		try (Stream<String> lines = Files.lines(Paths.get("custinfo.txt"))) {
-		    String line12 = lines.skip(11).findFirst().get();
-		    System.out.println(line12);
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-				}
 	}
- }
 }
