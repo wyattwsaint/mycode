@@ -35,7 +35,6 @@ public class Application {
 			bw.flush();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -45,7 +44,6 @@ public class Application {
 			bw.flush();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -55,7 +53,6 @@ public class Application {
 			bw.flush();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -65,7 +62,6 @@ public class Application {
 			bw.flush();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -76,7 +72,6 @@ public class Application {
 			bw.flush();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -92,8 +87,8 @@ public class Application {
 
 		if (drop > .48) {
 			System.out.println("Dropped " + 100 * drop
-					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later on when you ask why your commission sucks.Commission is "
-					+ .02 * actual * .7);
+					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks.Commission is "
+					+ .02 * actual * .7 + " of " + .24 * book);
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -102,7 +97,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
@@ -112,7 +106,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
@@ -122,14 +115,13 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		else if (drop > .44) {
 			System.out.println("Dropped " + 100 * drop
-					+ " %, which is greater than a 44% drop but less than 48%. Commission is " + .02 * actual * .7);
+					+ " %, which is greater than a 44% drop but less than 48%. Commission is " + .02 * actual * .7 + " of " + .24 * book);
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -138,7 +130,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -149,7 +140,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
@@ -159,14 +149,13 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		else {
 			double comm = commperc * actual * .7;
-			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm);
+			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book);
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -175,7 +164,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -186,7 +174,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
@@ -196,7 +183,6 @@ public class Application {
 				bw.flush();
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			double value = 0;
@@ -206,7 +192,6 @@ public class Application {
 					
 					System.out.println(firstline);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
