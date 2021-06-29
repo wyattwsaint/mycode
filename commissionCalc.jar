@@ -1,5 +1,12 @@
-package commissionCalc;
+package commCalc;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,10 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.stream.Stream;
+import java.util.Properties;
 
-import javax.swing.JOptionPane;
-
-public class Application {
+public class CommCalc {
 
 	public static void main(String[] args) {
 
@@ -90,6 +96,10 @@ public class Application {
 					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks.Commission is "
 					+ .02 * actual * .7 + " of " + .24 * book);
 
+			double email = .02 * actual * .7;
+			double email2 = .24 * book;
+			String email3 = " of ";
+
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(actual));
@@ -116,12 +126,73 @@ public class Application {
 
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+
+			// Recipient's email ID needs to be mentioned.
+			String to = "wmsaint17@gmail.com";
+
+			// Sender's email ID needs to be mentioned
+			String from = "wyatt.saint@aspenwindows.com";
+
+			// Assuming you are sending email from through gmails smtp
+			String host = "smtp.gmail.com";
+
+			// Get system properties
+			Properties properties = System.getProperties();
+
+			// Setup mail server
+			properties.put("mail.smtp.host", host);
+			properties.put("mail.smtp.port", "465");
+			properties.put("mail.smtp.ssl.enable", "true");
+			properties.put("mail.smtp.auth", "true");
+
+			// Get the Session object.// and pass username and password
+			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+				protected PasswordAuthentication getPasswordAuthentication() {
+
+					return new PasswordAuthentication("wyatt.saint@aspenwindows.com", "Swatts0429*");
+
+				}
+
+			});
+
+			// Used to debug SMTP issues
+			session.setDebug(true);
+
+			try {
+				// Create a default MimeMessage object.
+				MimeMessage message = new MimeMessage(session);
+
+				// Set From: header field of the header.
+				message.setFrom(new InternetAddress(from));
+
+				// Set To: header field of the header.
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+				// Set Subject: header field
+				message.setSubject("SOLD!!");
+
+				// Now set the actual message
+				message.setText(String.valueOf(email + email3 + email2));
+
+				System.out.println("sending...");
+				// Send message
+				Transport.send(message);
+				System.out.println("Sent message successfully....");
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
 			}
 		}
 
 		else if (drop > .44) {
-			System.out.println("Dropped " + 100 * drop
-					+ " %, which is greater than a 44% drop but less than 48%. Commission is " + .02 * actual * .7 + " of " + .24 * book);
+			System.out.println(
+					"Dropped " + 100 * drop + " %, which is greater than a 44% drop but less than 48%. Commission is "
+							+ .02 * actual * .7 + " of " + .24 * book);
+
+			double email = .02 * actual * .7;
+			double email2 = .24 * book;
+			String email3 = " of ";
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -150,12 +221,71 @@ public class Application {
 
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+			// Recipient's email ID needs to be mentioned.
+			String to = "wmsaint17@gmail.com";
+
+			// Sender's email ID needs to be mentioned
+			String from = "wyatt.saint@aspenwindows.com";
+
+			// Assuming you are sending email from through gmails smtp
+			String host = "smtp.gmail.com";
+
+			// Get system properties
+			Properties properties = System.getProperties();
+
+			// Setup mail server
+			properties.put("mail.smtp.host", host);
+			properties.put("mail.smtp.port", "465");
+			properties.put("mail.smtp.ssl.enable", "true");
+			properties.put("mail.smtp.auth", "true");
+
+			// Get the Session object.// and pass username and password
+			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+				protected PasswordAuthentication getPasswordAuthentication() {
+
+					return new PasswordAuthentication("wyatt.saint@aspenwindows.com", "Swatts0429*");
+
+				}
+
+			});
+
+			// Used to debug SMTP issues
+			session.setDebug(true);
+
+			try {
+				// Create a default MimeMessage object.
+				MimeMessage message = new MimeMessage(session);
+
+				// Set From: header field of the header.
+				message.setFrom(new InternetAddress(from));
+
+				// Set To: header field of the header.
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+				// Set Subject: header field
+				message.setSubject("SOLD!!");
+
+				// Now set the actual message
+				message.setText(String.valueOf(email + email3 + email2));
+
+				System.out.println("sending...");
+				// Send message
+				Transport.send(message);
+				System.out.println("Sent message successfully....");
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
 			}
 		}
 
 		else {
 			double comm = commperc * actual * .7;
 			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book);
+
+			double email = comm;
+			double email2 = .24 * book;
+			String email3 = " of ";
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -185,16 +315,62 @@ public class Application {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			double value = 0;
-			while (value != 0) {
-				try (Stream<String> lines = Files.lines(Paths.get("custinfo.txt"))) {
-					String firstline = lines.skip(7).findFirst().get();
-					
-					System.out.println(firstline);
-				} catch (IOException e) {
-					e.printStackTrace();
+			// Recipient's email ID needs to be mentioned.
+			String to = "wmsaint17@gmail.com";
+
+			// Sender's email ID needs to be mentioned
+			String from = "wyatt.saint@aspenwindows.com";
+
+			// Assuming you are sending email from through gmails smtp
+			String host = "smtp.gmail.com";
+
+			// Get system properties
+			Properties properties = System.getProperties();
+
+			// Setup mail server
+			properties.put("mail.smtp.host", host);
+			properties.put("mail.smtp.port", "465");
+			properties.put("mail.smtp.ssl.enable", "true");
+			properties.put("mail.smtp.auth", "true");
+
+			// Get the Session object.// and pass username and password
+			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+				protected PasswordAuthentication getPasswordAuthentication() {
+
+					return new PasswordAuthentication("wyatt.saint@aspenwindows.com", "Swatts0429*");
+
 				}
+
+			});
+
+			// Used to debug SMTP issues
+			session.setDebug(true);
+
+			try {
+				// Create a default MimeMessage object.
+				MimeMessage message = new MimeMessage(session);
+
+				// Set From: header field of the header.
+				message.setFrom(new InternetAddress(from));
+
+				// Set To: header field of the header.
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+				// Set Subject: header field
+				message.setSubject("SOLD!!");
+
+				// Now set the actual message
+				message.setText(String.valueOf(email + email3 + email2));
+
+				System.out.println("sending...");
+				// Send message
+				Transport.send(message);
+				System.out.println("Sent message successfully....");
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
 			}
 		}
+
 	}
 }
