@@ -94,8 +94,10 @@ public class CommCalc {
 		if (drop > .48) {
 			System.out.println("Dropped " + 100 * drop
 					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks.Commission is "
-					+ .02 * actual * .7 + " of " + .24 * book);
-
+					+ .02 * actual * .7 + " of " + .24 * book * .7);
+			
+			scanner.next();
+			
 			double email = .02 * actual * .7;
 			String email2 = " of ";
 			double email3 = .24 * book;
@@ -177,7 +179,9 @@ public class CommCalc {
 		else if (drop > .44) {
 			System.out.println(
 					"Dropped " + 100 * drop + " %, which is greater than a 44% drop but less than 48%. Commission is "
-							+ .02 * actual * .7 + " of " + .24 * book);
+							+ .02 * actual * .7 + " of " + .24 * book * .7);
+			
+			scanner.next();
 
 			double email = .02 * actual * .7;
 			String email2 = " of ";
@@ -259,7 +263,9 @@ public class CommCalc {
 
 		else {
 			double comm = commperc * actual * .7;
-			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book);
+			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book *.7);
+			
+			scanner.next();
 
 			double email = comm;
 			String email2 = " of ";
@@ -340,4 +346,3 @@ public class CommCalc {
 		}
 
 	}
-}
