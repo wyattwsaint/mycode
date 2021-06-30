@@ -97,8 +97,10 @@ public class CommCalc {
 					+ .02 * actual * .7 + " of " + .24 * book);
 
 			double email = .02 * actual * .7;
-			double email2 = .24 * book;
-			String email3 = " of ";
+			String email2 = " of ";
+			double email3 = .24 * book;
+			String email4 = "...sold for ";
+			double email5 = actual;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -128,25 +130,19 @@ public class CommCalc {
 				e.printStackTrace();
 			}
 
-			// Recipient's email ID needs to be mentioned.
 			String to = "wmsaint17@gmail.com";
 
-			// Sender's email ID needs to be mentioned
 			String from = "wyatt.saint@aspenwindows.com";
 
-			// Assuming you are sending email from through gmails smtp
 			String host = "smtp.gmail.com";
 
-			// Get system properties
 			Properties properties = System.getProperties();
 
-			// Setup mail server
 			properties.put("mail.smtp.host", host);
 			properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.ssl.enable", "true");
 			properties.put("mail.smtp.auth", "true");
 
-			// Get the Session object.// and pass username and password
 			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
 				protected PasswordAuthentication getPasswordAuthentication() {
@@ -157,27 +153,20 @@ public class CommCalc {
 
 			});
 
-			// Used to debug SMTP issues
 			session.setDebug(true);
 
 			try {
-				// Create a default MimeMessage object.
 				MimeMessage message = new MimeMessage(session);
 
-				// Set From: header field of the header.
 				message.setFrom(new InternetAddress(from));
 
-				// Set To: header field of the header.
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-				// Set Subject: header field
 				message.setSubject("SOLD!!");
 
-				// Now set the actual message
-				message.setText(String.valueOf(email + email3 + email2));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
 
 				System.out.println("sending...");
-				// Send message
 				Transport.send(message);
 				System.out.println("Sent message successfully....");
 			} catch (MessagingException mex) {
@@ -191,8 +180,10 @@ public class CommCalc {
 							+ .02 * actual * .7 + " of " + .24 * book);
 
 			double email = .02 * actual * .7;
-			double email2 = .24 * book;
-			String email3 = " of ";
+			String email2 = " of ";
+			double email3 = .24 * book;
+			String email4 = "...sold for ";
+			double email5 = actual;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -222,25 +213,19 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// Recipient's email ID needs to be mentioned.
 			String to = "wmsaint17@gmail.com";
 
-			// Sender's email ID needs to be mentioned
 			String from = "wyatt.saint@aspenwindows.com";
 
-			// Assuming you are sending email from through gmails smtp
 			String host = "smtp.gmail.com";
 
-			// Get system properties
 			Properties properties = System.getProperties();
 
-			// Setup mail server
 			properties.put("mail.smtp.host", host);
 			properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.ssl.enable", "true");
 			properties.put("mail.smtp.auth", "true");
 
-			// Get the Session object.// and pass username and password
 			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
 				protected PasswordAuthentication getPasswordAuthentication() {
@@ -251,27 +236,20 @@ public class CommCalc {
 
 			});
 
-			// Used to debug SMTP issues
 			session.setDebug(true);
 
 			try {
-				// Create a default MimeMessage object.
 				MimeMessage message = new MimeMessage(session);
 
-				// Set From: header field of the header.
 				message.setFrom(new InternetAddress(from));
 
-				// Set To: header field of the header.
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-				// Set Subject: header field
 				message.setSubject("SOLD!!");
 
-				// Now set the actual message
-				message.setText(String.valueOf(email + email3 + email2));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
 
 				System.out.println("sending...");
-				// Send message
 				Transport.send(message);
 				System.out.println("Sent message successfully....");
 			} catch (MessagingException mex) {
@@ -284,8 +262,10 @@ public class CommCalc {
 			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book);
 
 			double email = comm;
-			double email2 = .24 * book;
-			String email3 = " of ";
+			String email2 = " of ";
+			double email3 = .24 * book;
+			String email4 = "...sold for ";
+			double email5 = actual;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -315,25 +295,19 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// Recipient's email ID needs to be mentioned.
 			String to = "wmsaint17@gmail.com";
 
-			// Sender's email ID needs to be mentioned
 			String from = "wyatt.saint@aspenwindows.com";
 
-			// Assuming you are sending email from through gmails smtp
 			String host = "smtp.gmail.com";
 
-			// Get system properties
 			Properties properties = System.getProperties();
 
-			// Setup mail server
 			properties.put("mail.smtp.host", host);
 			properties.put("mail.smtp.port", "465");
 			properties.put("mail.smtp.ssl.enable", "true");
 			properties.put("mail.smtp.auth", "true");
 
-			// Get the Session object.// and pass username and password
 			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
 				protected PasswordAuthentication getPasswordAuthentication() {
@@ -344,27 +318,20 @@ public class CommCalc {
 
 			});
 
-			// Used to debug SMTP issues
 			session.setDebug(true);
 
 			try {
-				// Create a default MimeMessage object.
 				MimeMessage message = new MimeMessage(session);
 
-				// Set From: header field of the header.
 				message.setFrom(new InternetAddress(from));
 
-				// Set To: header field of the header.
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-				// Set Subject: header field
 				message.setSubject("SOLD!!");
 
-				// Now set the actual message
-				message.setText(String.valueOf(email + email3 + email2));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
 
 				System.out.println("sending...");
-				// Send message
 				Transport.send(message);
 				System.out.println("Sent message successfully....");
 			} catch (MessagingException mex) {
