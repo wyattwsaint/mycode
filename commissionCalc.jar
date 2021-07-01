@@ -33,6 +33,8 @@ public class CommCalc {
 		String comments = scanner.nextLine();
 		System.out.println("Date: ");
 		String date = scanner.nextLine();
+		System.out.println("Credit status: ");
+		String credstat = scanner.nextLine();
 
 		try {
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -103,6 +105,8 @@ public class CommCalc {
 			double email3 = .24 * book;
 			String email4 = "...sold for ";
 			double email5 = actual;
+			String creddesc = "  Credit is ";
+			String credit = credstat;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -166,7 +170,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -188,6 +192,8 @@ public class CommCalc {
 			double email3 = .24 * book;
 			String email4 = "...sold for ";
 			double email5 = actual;
+			String creddesc = "  Credit is ";
+			String credit = credstat;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -198,7 +204,6 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(.02 * actual * .7));
@@ -217,6 +222,7 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+
 			String to = "wmsaint17@gmail.com";
 
 			String from = "wyatt.saint@aspenwindows.com";
@@ -251,7 +257,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -267,11 +273,13 @@ public class CommCalc {
 			
 			scanner.next();
 
-			double email = comm;
+			double email = .02 * actual * .7;
 			String email2 = " of ";
 			double email3 = .24 * book;
 			String email4 = "...sold for ";
 			double email5 = actual;
+			String creddesc = "  Credit is ";
+			String credit = credstat;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
@@ -282,10 +290,9 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(comm));
+				bw.write(String.valueOf(.02 * actual * .7));
 				bw.newLine();
 				bw.flush();
 
@@ -301,6 +308,7 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+
 			String to = "wmsaint17@gmail.com";
 
 			String from = "wyatt.saint@aspenwindows.com";
@@ -335,7 +343,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5));
+				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -346,3 +354,4 @@ public class CommCalc {
 		}
 
 	}
+}
