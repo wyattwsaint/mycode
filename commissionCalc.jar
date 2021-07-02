@@ -98,8 +98,6 @@ public class CommCalc {
 					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks.Commission is "
 					+ .02 * actual * .7 + " of " + .24 * book * .7);
 			
-			scanner.next();
-			
 			double email = .02 * actual * .7;
 			String email2 = " of ";
 			double email3 = .24 * book;
@@ -136,6 +134,8 @@ public class CommCalc {
 				e.printStackTrace();
 			}
 
+			scanner.next();
+			
 			String to = "wmsaint17@gmail.com";
 
 			String from = "wyatt.saint@aspenwindows.com";
@@ -185,8 +185,6 @@ public class CommCalc {
 					"Dropped " + 100 * drop + " %, which is greater than a 44% drop but less than 48%. Commission is "
 							+ .02 * actual * .7 + " of " + .24 * book * .7);
 			
-			scanner.next();
-
 			double email = .02 * actual * .7;
 			String email2 = " of ";
 			double email3 = .24 * book;
@@ -222,6 +220,8 @@ public class CommCalc {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			scanner.next();
 
 			String to = "wmsaint17@gmail.com";
 
@@ -271,11 +271,9 @@ public class CommCalc {
 			double comm = commperc * actual * .7;
 			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book *.7);
 			
-			scanner.next();
-
-			double email = .02 * actual * .7;
+			double email = comm;
 			String email2 = " of ";
-			double email3 = .24 * book;
+			double email3 = .24 * book * .7;
 			String email4 = "...sold for ";
 			double email5 = actual;
 			String creddesc = "  Credit is ";
@@ -292,7 +290,7 @@ public class CommCalc {
 			}
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(.02 * actual * .7));
+				bw.write(String.valueOf(comm));
 				bw.newLine();
 				bw.flush();
 
@@ -309,6 +307,8 @@ public class CommCalc {
 				e.printStackTrace();
 			}
 
+			scanner.next();
+			
 			String to = "wmsaint17@gmail.com";
 
 			String from = "wyatt.saint@aspenwindows.com";
