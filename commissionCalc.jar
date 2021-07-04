@@ -10,6 +10,8 @@ import javax.mail.internet.MimeMessage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.Properties;
 
@@ -27,6 +29,7 @@ public class CommCalc {
 		System.out.println("Enter product: ");
 		String product = scanner.nextLine();
 		System.out.println("Comments: ");
+
 		String comments = scanner.nextLine();
 		System.out.println("Date: ");
 		String date = scanner.nextLine();
@@ -63,20 +66,19 @@ public class CommCalc {
 
 		if (drop > .48) {
 			System.out.println("Dropped " + 100 * drop
-					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks.Commission is "
-					+ .02 * actual * .7 + " of " + .24 * book * .7);
+					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks. Commission is 0.");
 
-			double email = .02 * actual * .7;
-			String email2 = " of ";
-			double email3 = .24 * book;
-			String email4 = "...sold for ";
-			double email5 = actual;
+			String commish = "0";
+			String of = " of ";
+			double bookprice = .24 * book * .7;
+			String soldfor = "...sold for ";
+			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
 
 			try {
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(.02 * actual * .7));
+				bw.write(String.valueOf(0));
 				bw.write(" / ");
 				bw.write(String.valueOf(actual));
 				bw.newLine();
@@ -124,7 +126,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -139,11 +141,11 @@ public class CommCalc {
 					"Dropped " + 100 * drop + " %, which is greater than a 44% drop but less than 48%. Commission is "
 							+ .02 * actual * .7 + " of " + .24 * book * .7);
 
-			double email = .02 * actual * .7;
-			String email2 = " of ";
-			double email3 = .24 * book;
-			String email4 = "...sold for ";
-			double email5 = actual;
+			double commish = .02 * actual * .7;
+			String of = " of ";
+			double bookprice = .24 * book;
+			String soldfor = "...sold for ";
+			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
 
@@ -189,6 +191,7 @@ public class CommCalc {
 			session.setDebug(true);
 
 			try {
+
 				MimeMessage message = new MimeMessage(session);
 
 				message.setFrom(new InternetAddress(from));
@@ -197,7 +200,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -211,11 +214,11 @@ public class CommCalc {
 			double comm = commperc * actual * .7;
 			System.out.println("Dropped " + 100 * drop + " %. Commission is " + comm + " of " + .24 * book * .7);
 
-			double email = comm;
-			String email2 = " of ";
-			double email3 = .24 * book * .7;
-			String email4 = "...sold for ";
-			double email5 = actual;
+			double commish = comm;
+			String of = " of ";
+			double bookprice = .24 * book * .7;
+			String soldfor = "...sold for ";
+			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
 
@@ -235,7 +238,6 @@ public class CommCalc {
 
 			scanner.next();
 			scanner.close();
-			
 			String to = "wmsaint17@gmail.com";
 
 			String from = "wyatt.saint@aspenwindows.com";
@@ -270,7 +272,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(email + email2 + email3 + email4 + email5 + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -279,5 +281,24 @@ public class CommCalc {
 				mex.printStackTrace();
 			}
 		}
+
+		
+		//This is for adding total commissions made
+		for (int line = 7; line < 2000; line += 8) {
+
+			String linecontent;
+
+			try {
+				linecontent = Files.readAllLines(Paths.get("custinfo.txt")).get(line);
+				double commofline = Double.parseDouble(linecontent);
+				System.out.println(commofline);
+			}
+
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 }
