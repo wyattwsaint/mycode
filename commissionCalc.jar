@@ -23,6 +23,8 @@ public class CommCalc {
 		BufferedWriter bw = null;
 		BufferedWriter bwcomm = null;
 
+		
+		// v v Initial data entry
 		System.out.println("Enter first name: ");
 		String firstName = scanner.nextLine();
 		System.out.println("Enter last name: ");
@@ -30,7 +32,6 @@ public class CommCalc {
 		System.out.println("Enter product: ");
 		String product = scanner.nextLine();
 		System.out.println("Comments: ");
-
 		String comments = scanner.nextLine();
 		System.out.println("Date: ");
 		String date = scanner.nextLine();
@@ -38,8 +39,8 @@ public class CommCalc {
 		String credstat = scanner.nextLine();
 
 		try {
+			// v v This is to track basic appointment data
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-			
 			bw.write(firstName);
 			bw.write(" ");
 			bw.write(lastName);
@@ -62,10 +63,12 @@ public class CommCalc {
 		System.out.println("Enter actual price: ");
 		double actual = scanner.nextDouble();
 
+		// v v Commission calculations
 		double drop = ((book - actual) / book);
 
 		double commperc = (.48 - (drop)) / 2;
 
+		// v v Big IF statement that determines different outcomes based on how deep the rep discounted the price
 		if (drop > .48) {
 			System.out.println("Dropped " + 100 * drop
 					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks. Commission is 0.");
@@ -233,6 +236,7 @@ public class CommCalc {
 			String credit = credstat;
 
 			try {
+				// v v This is to track commissions and actual sold for price
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(comm));
 				bw.write(" / ");
@@ -241,6 +245,7 @@ public class CommCalc {
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
+				// v v This is for tracking commissions earned
 				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt", true));
 				bwcomm.write(String.valueOf(comm));
 				bwcomm.newLine();
