@@ -18,7 +18,7 @@ import java.util.Properties;
 public class CommCalc {
 
 	public static void main(String[] args) {
-
+/*
 		Scanner scanner = new Scanner(System.in);
 		BufferedWriter bw = null;
 		BufferedWriter bwcomm = null;
@@ -303,25 +303,18 @@ public class CommCalc {
 
 		//This is for adding total commissions made
 		
-/*		
-		for (int line = 7; line < 2000; line += 8) {
-
+*/
 			String linecontent;
 
 			try {
-				linecontent = Files.readAllLines(Paths.get("custinfo.txt")).get(line);
+				linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
 				double commofline = Double.parseDouble(linecontent);
-				
-				
-				
 				System.out.println(commofline);
+				double commadd = commadd + comm;
 			}
 
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-		}
-*/
 	}
 }
