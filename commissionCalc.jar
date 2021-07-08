@@ -246,8 +246,9 @@ public class CommCalc {
 				bw.newLine();
 				bw.flush();
 				// v v This is for tracking commissions earned
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt", true));
 				bwcomm.write(String.valueOf(comm));
+				bwcomm.newLine();
 				bwcomm.flush();
 				
 
@@ -306,18 +307,27 @@ public class CommCalc {
 
 			try {
 				linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
-				double commofline = Double.parseDouble(linecontent);
-				System.out.println(commofline);
+/*				double commofline = Double.parseDouble(linecontent);
 				double commadd = commofline + comm;
-				System.out.println(commadd);
 				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
 				bwcomm.write(String.valueOf(commadd));
 				bwcomm.flush();
+				System.out.println(commadd);    */
+				
+				int line = 0;
+				while ((line != null);	{
+					Files.readAllLines(Paths.get("totalcommissions.txt")).get(line);
+					System.out.println(line);
+					line++;
+				}
+					
 			}
 
 			catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+		
 		}
 
 
