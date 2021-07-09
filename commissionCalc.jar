@@ -17,7 +17,7 @@ import java.util.Properties;
 
 public class CommCalc {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Scanner scanner = new Scanner(System.in);
 		BufferedWriter bw = null;
@@ -80,6 +80,7 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
+			String totalmonthlycomm = "Total monthly commish: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -101,24 +102,14 @@ public class CommCalc {
 				e.printStackTrace();
 			}
 			
-			// v v This is for tracking commissions earned
-			String linecontent;
-
-
-			try {
-				linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
-				double commofline = Double.parseDouble(linecontent);
-				double commadd = commofline + (.02 * actual * .7);
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
-				bwcomm.write(String.valueOf(commadd));
-				bwcomm.flush();
-				System.out.println(commadd);    
-
-			}
-
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+			//  v  v  Code for monthly running total of commissions earned
+			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+			double commofline = Double.parseDouble(linecontent);
+			double commadd = commofline + (.02 * actual * .7);
+			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+			bwcomm.write(String.valueOf(commadd));
+			bwcomm.flush();
+			System.out.println(commadd); 
 			
 			scanner.next();
 
@@ -156,7 +147,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -178,6 +169,7 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
+			String totalmonthlycomm = "Total monthly commish: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -191,30 +183,19 @@ public class CommCalc {
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				// v v This is for tracking commissions earned
-				
-				String linecontent;
-
-
-				try {
-					linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
-					double commofline = Double.parseDouble(linecontent);
-					double commadd = commofline + (.02 * actual * .7);
-					bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
-					bwcomm.write(String.valueOf(commadd));
-					bwcomm.flush();
-					System.out.println(commadd);    
-
-				}
-
-				catch (IOException e) {
-					e.printStackTrace();
-				}
-				
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			//  v  v  Code for monthly running total of commissions earned
+			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+			double commofline = Double.parseDouble(linecontent);
+			double commadd = commofline + (.02 * actual * .7);
+			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+			bwcomm.write(String.valueOf(commadd));
+			bwcomm.flush();
+			System.out.println(commadd);    
 
 			scanner.next();
 
@@ -253,7 +234,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -274,6 +255,7 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
+			String totalmonthlycomm = "Total monthly commish: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -287,30 +269,20 @@ public class CommCalc {
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				// v v This is for tracking commissions earned
-				
-				String linecontent;
-
-
-				try {
-					linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
-					double commofline = Double.parseDouble(linecontent);
-					double commadd = commofline + comm;
-					bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
-					bwcomm.write(String.valueOf(commadd));
-					bwcomm.flush();
-					System.out.println(commadd);    
-
-				}
-
-				catch (IOException e) {
-					e.printStackTrace();
-				}
 				
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			//  v  v  Code for monthly running total of commissions earned
+			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+			double commofline = Double.parseDouble(linecontent);
+			double commadd = commofline + comm;
+			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+			bwcomm.write(String.valueOf(commadd));
+			bwcomm.flush();
+			System.out.println(commadd);    
 
 			scanner.next();
 			scanner.close();
@@ -348,7 +320,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
