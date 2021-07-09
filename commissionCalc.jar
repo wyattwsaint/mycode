@@ -23,7 +23,7 @@ public class CommCalc {
 		BufferedWriter bw = null;
 		BufferedWriter bwcomm = null;
 
-		
+	
 		// v v Initial data entry
 		System.out.println("Enter first name: ");
 		String firstName = scanner.nextLine();
@@ -82,23 +82,44 @@ public class CommCalc {
 			String credit = credstat;
 
 			try {
+				// v v This is to track commissions and actual sold for price
+				
+				
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-				bw.write(String.valueOf(0));
+				bw.write(String.valueOf(.02 * actual * .7));
 				bw.write(" / ");
 				bw.write(String.valueOf(actual));
 				bw.newLine();
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt", true));
-				bwcomm.write(String.valueOf(0));
-				bwcomm.newLine();
-				bwcomm.flush();
 
+				
+				
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			// v v This is for tracking commissions earned
+			String linecontent;
 
+
+			try {
+				linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+				double commofline = Double.parseDouble(linecontent);
+				double commadd = commofline + (.02 * actual * .7);
+				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+				bwcomm.write(String.valueOf(commadd));
+				bwcomm.flush();
+				System.out.println(commadd);    
+
+			}
+
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			scanner.next();
 
 			String to = "wmsaint17@gmail.com";
@@ -159,6 +180,9 @@ public class CommCalc {
 			String credit = credstat;
 
 			try {
+				// v v This is to track commissions and actual sold for price
+				
+				
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(.02 * actual * .7));
 				bw.write(" / ");
@@ -167,11 +191,27 @@ public class CommCalc {
 				bw.write(String.valueOf("----"));
 				bw.newLine();
 				bw.flush();
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt", true));
-				bwcomm.write(String.valueOf(.02 * actual * .7));
-				bwcomm.newLine();
-				bwcomm.flush();
+				// v v This is for tracking commissions earned
+				
+				String linecontent;
 
+
+				try {
+					linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+					double commofline = Double.parseDouble(linecontent);
+					double commadd = commofline + (.02 * actual * .7);
+					bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+					bwcomm.write(String.valueOf(commadd));
+					bwcomm.flush();
+					System.out.println(commadd);    
+
+				}
+
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -237,6 +277,8 @@ public class CommCalc {
 
 			try {
 				// v v This is to track commissions and actual sold for price
+				
+				
 				bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 				bw.write(String.valueOf(comm));
 				bw.write(" / ");
@@ -246,12 +288,26 @@ public class CommCalc {
 				bw.newLine();
 				bw.flush();
 				// v v This is for tracking commissions earned
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt", true));
-				bwcomm.write(String.valueOf(comm));
-				bwcomm.newLine();
-				bwcomm.flush();
 				
+				String linecontent;
 
+
+				try {
+					linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
+					double commofline = Double.parseDouble(linecontent);
+					double commadd = commofline + comm;
+					bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
+					bwcomm.write(String.valueOf(commadd));
+					bwcomm.flush();
+					System.out.println(commadd);    
+
+				}
+
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -300,36 +356,9 @@ public class CommCalc {
 			} catch (MessagingException mex) {
 				mex.printStackTrace();
 			}
-//This is for adding total commissions made
-			
-
-			String linecontent;
-
-			try {
-				linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
-/*				double commofline = Double.parseDouble(linecontent);
-				double commadd = commofline + comm;
-				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
-				bwcomm.write(String.valueOf(commadd));
-				bwcomm.flush();
-				System.out.println(commadd);    */
-				
-				int line = 0;
-				while ((line != null);	{
-					Files.readAllLines(Paths.get("totalcommissions.txt")).get(line);
-					System.out.println(line);
-					line++;
-				}
-					
-			}
-
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-			
 		
 		}
 
-
 	}
+	
 }
