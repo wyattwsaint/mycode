@@ -80,7 +80,8 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
-			String totalmonthlycomm = "Total monthly commish: ";
+			String totalmonthlycomm = ".  Total monthly commish: ";
+			String totalmonthlysales = ".  Total monthly sales: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -111,6 +112,15 @@ public class CommCalc {
 			bwcomm.flush();
 			System.out.println(commadd); 
 			
+			//  v  v  Code for monthly running total of sales earned
+			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
+			double amountofline = Double.parseDouble(linecontents);
+			double amountadd = amountofline + actual;
+			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
+			bwcomm.write(String.valueOf(amountadd));
+			bwcomm.flush();
+			System.out.println(amountadd);    
+			
 			scanner.next();
 
 			String to = "wmsaint17@gmail.com";
@@ -147,7 +157,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -169,7 +179,8 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
-			String totalmonthlycomm = "Total monthly commish: ";
+			String totalmonthlycomm = ".  Total monthly commish: ";
+			String totalmonthlysales = ".  Total monthly sales: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -196,6 +207,15 @@ public class CommCalc {
 			bwcomm.write(String.valueOf(commadd));
 			bwcomm.flush();
 			System.out.println(commadd);    
+			
+			//  v  v  Code for monthly running total of sales earned
+			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
+			double amountofline = Double.parseDouble(linecontents);
+			double amountadd = amountofline + actual;
+			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
+			bwcomm.write(String.valueOf(amountadd));
+			bwcomm.flush();
+			System.out.println(amountadd);    
 
 			scanner.next();
 
@@ -234,7 +254,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -255,7 +275,8 @@ public class CommCalc {
 			double actualprice = actual;
 			String creddesc = "  Credit is ";
 			String credit = credstat;
-			String totalmonthlycomm = "Total monthly commish: ";
+			String totalmonthlycomm = ".  Total monthly commish: ";
+			String totalmonthlysales = ".  Total monthly sales: ";
 
 			try {
 				// v v This is to track commissions and actual sold for price
@@ -283,6 +304,15 @@ public class CommCalc {
 			bwcomm.write(String.valueOf(commadd));
 			bwcomm.flush();
 			System.out.println(commadd);    
+			
+			//  v  v  Code for monthly running total of sales earned
+			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
+			double amountofline = Double.parseDouble(linecontents);
+			double amountadd = amountofline + actual;
+			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
+			bwcomm.write(String.valueOf(amountadd));
+			bwcomm.flush();
+			System.out.println(amountadd);    
 
 			scanner.next();
 			scanner.close();
@@ -320,7 +350,7 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
