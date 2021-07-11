@@ -38,24 +38,21 @@ public class CommCalc {
 		System.out.println("Credit status: ");
 		String credstat = scanner.nextLine();
 
-		try {
-			// v v This is to track basic appointment data
-			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
-			bw.write(firstName);
-			bw.write(" ");
-			bw.write(lastName);
-			bw.newLine();
-			bw.write(product);
-			bw.newLine();
-			bw.write(comments);
-			bw.newLine();
-			bw.write(date);
-			bw.newLine();
-			bw.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// v v This is to track basic appointment data
+		bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
+		bw.write(firstName);
+		bw.write(" ");
+		bw.write(lastName);
+		bw.newLine();
+		bw.write(product);
+		bw.newLine();
+		bw.write(comments);
+		bw.newLine();
+		bw.write(date);
+		bw.newLine();
+		bw.flush();
+		bw.close();
+		
 
 		System.out.println("Enter book price: ");
 		double book = scanner.nextDouble();
@@ -65,7 +62,6 @@ public class CommCalc {
 
 		// v v Commission calculations
 		double drop = ((book - actual) / book);
-
 		double commperc = (.48 - (drop)) / 2;
 
 		// v v Big IF statement that determines different outcomes based on how deep the rep discounted the price
