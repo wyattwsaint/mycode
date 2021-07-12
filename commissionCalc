@@ -23,7 +23,6 @@ public class CommCalc {
 		BufferedWriter bw = null;
 		BufferedWriter bwcomm = null;
 
-	
 		// v v Initial data entry
 		System.out.println("Enter first name: ");
 		String firstName = scanner.nextLine();
@@ -52,7 +51,6 @@ public class CommCalc {
 		bw.newLine();
 		bw.flush();
 		bw.close();
-		
 
 		System.out.println("Enter book price: ");
 		double book = scanner.nextDouble();
@@ -64,7 +62,8 @@ public class CommCalc {
 		double drop = ((book - actual) / book);
 		double commperc = (.48 - (drop)) / 2;
 
-		// v v Big IF statement that determines different outcomes based on how deep the rep discounted the price
+		// v v Big IF statement that determines different outcomes based on how deep the
+		// rep discounted the price
 		if (drop > .48) {
 			System.out.println("Dropped " + 100 * drop
 					+ " %, which is greater than a 48% drop. Diller will sarcastically tell you this later when you ask why your commission sucks. Commission is 0.");
@@ -79,26 +78,24 @@ public class CommCalc {
 			String totalmonthlycomm = ".  Total monthly commish: ";
 			String totalmonthlysales = ".  Total monthly sales: ";
 
-			
-			//  v  v  Code for monthly running total of commissions earned
+			// v v Code for monthly running total of commissions earned
 			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
 			double commofline = Double.parseDouble(linecontent);
 			double commadd = commofline + (.02 * actual * .7);
 			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
 			bwcomm.write(String.valueOf(commadd));
 			bwcomm.flush();
-			System.out.println(commadd); 
-			
-			//  v  v  Code for monthly running total of sales earned
+			System.out.println(commadd);
+
+			// v v Code for monthly running total of sales earned
 			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
 			double amountofline = Double.parseDouble(linecontents);
 			double amountadd = amountofline + actual;
 			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
 			bwcomm.write(String.valueOf(amountadd));
 			bwcomm.flush();
-			System.out.println(amountadd); 
-			
-			
+			System.out.println(amountadd);
+
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(String.valueOf(.02 * actual * .7));
 			bw.write(" / ");
@@ -108,6 +105,15 @@ public class CommCalc {
 			bw.newLine();
 			bw.flush();
 			
+			// v v Code for monthly running total yearly commissions earned
+			String yearlylinecontent = Files.readAllLines(Paths.get("totalyearlycommissions.txt")).get(0);
+			double yearlycommofline = Double.parseDouble(yearlylinecontent);
+			double yearlycommadd = yearlycommofline + (.02 * actual * .7);
+			bwcomm = new BufferedWriter(new FileWriter("totalyearlycommissions.txt"));
+			bwcomm.write(String.valueOf(yearlycommadd));
+			bwcomm.flush();
+			System.out.println(yearlycommadd);
+
 			scanner.next();
 
 			String to = "wmsaint17@gmail.com";
@@ -144,7 +150,8 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
+						+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -169,25 +176,24 @@ public class CommCalc {
 			String totalmonthlycomm = ".  Total monthly commish: ";
 			String totalmonthlysales = ".  Total monthly sales: ";
 
-			
-			//  v  v  Code for monthly running total of commissions earned
+			// v v Code for monthly running total of commissions earned
 			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
 			double commofline = Double.parseDouble(linecontent);
 			double commadd = commofline + (.02 * actual * .7);
 			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
 			bwcomm.write(String.valueOf(commadd));
 			bwcomm.flush();
-			System.out.println(commadd);    
-			
-			//  v  v  Code for monthly running total of sales earned
+			System.out.println(commadd);
+
+			// v v Code for monthly running total of sales earned
 			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
 			double amountofline = Double.parseDouble(linecontents);
 			double amountadd = amountofline + actual;
 			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
 			bwcomm.write(String.valueOf(amountadd));
 			bwcomm.flush();
-			System.out.println(amountadd); 
-			
+			System.out.println(amountadd);
+
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(String.valueOf(.02 * actual * .7));
 			bw.write(" / ");
@@ -234,7 +240,8 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
+						+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -258,24 +265,24 @@ public class CommCalc {
 			String totalmonthlycomm = ".  Total monthly commish: ";
 			String totalmonthlysales = ".  Total monthly sales: ";
 
-			//  v  v  Code for monthly running total of commissions earned
+			// v v Code for monthly running total of commissions earned
 			String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
 			double commofline = Double.parseDouble(linecontent);
 			double commadd = commofline + comm;
 			bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
 			bwcomm.write(String.valueOf(commadd));
 			bwcomm.flush();
-			System.out.println(commadd);    
-			
-			//  v  v  Code for monthly running total of sales earned
+			System.out.println(commadd);
+
+			// v v Code for monthly running total of sales earned
 			String linecontents = Files.readAllLines(Paths.get("totalsales.txt")).get(0);
 			double amountofline = Double.parseDouble(linecontents);
 			double amountadd = amountofline + actual;
 			bwcomm = new BufferedWriter(new FileWriter("totalsales.txt"));
 			bwcomm.write(String.valueOf(amountadd));
 			bwcomm.flush();
-			System.out.println(amountadd);   
-			
+			System.out.println(amountadd);
+
 			bw = new BufferedWriter(new FileWriter("custinfo.txt", true));
 			bw.write(String.valueOf(comm));
 			bw.write(" / ");
@@ -321,7 +328,8 @@ public class CommCalc {
 
 				message.setSubject("SOLD!!");
 
-				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit + totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+				message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
+						+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
 
 				System.out.println("sending...");
 				Transport.send(message);
@@ -329,9 +337,9 @@ public class CommCalc {
 			} catch (MessagingException mex) {
 				mex.printStackTrace();
 			}
-		
+
 		}
 
 	}
-	
+
 }
