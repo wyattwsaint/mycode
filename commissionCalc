@@ -28,7 +28,8 @@ public class CommCalc {
 		System.out.println("Sold? (y or n)");
 		String soldornot = scanner.nextLine();
 		
-		if (soldornot == "y") {
+		// v v v Beginning IF statement for determining closing rate
+		if (soldornot.equals("y")) {
 		
 			// v v Initial data entry
 			System.out.println("Enter first name: ");
@@ -182,7 +183,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
@@ -291,7 +292,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
@@ -398,7 +399,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
@@ -410,6 +411,8 @@ public class CommCalc {
 				System.out.println("Monthly closing rate: " + (soldadd / apptsadd * 100) + "%");
 			}
 		}
+		
+		// v v v 2nd half of IF statement for closing percentage with result emailed out
 		else {
 			String apptsline = Files.readAllLines(Paths.get("appts.txt")).get(0);
 			double apptsofline = Double.parseDouble(apptsline);
@@ -421,6 +424,52 @@ public class CommCalc {
 			double soldofline = Double.parseDouble(soldline);
 			double soldadd = soldofline;
 			System.out.println("Monthly closing rate: " + (soldadd / apptsadd * 100) + "%");
+			
+			scanner.next();
+			scanner.close();
+			
+			String to = "wmsaint17@gmail.com";
+			
+			String from = "wyatt.saint@aspenwindows.com";
+
+			String host = "smtp.gmail.com";
+
+			Properties properties = System.getProperties();
+
+			properties.put("mail.smtp.host", host);
+			properties.put("mail.smtp.port", "465");
+			properties.put("mail.smtp.ssl.enable", "true");
+			properties.put("mail.smtp.auth", "true");
+
+			Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
+				protected PasswordAuthentication getPasswordAuthentication() {
+
+					return new PasswordAuthentication("wyatt.saint@aspenwindows.com", "Swatts0429*");
+
+				}
+
+			});
+
+			session.setDebug(true);
+
+			try {
+				MimeMessage message = new MimeMessage(session);
+
+				message.setFrom(new InternetAddress(from));
+
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+				message.setSubject("Didn't sell it :(");
+
+				message.setText("Monthly closing rate: "+ (soldadd / apptsadd * 100) + "%");
+
+				System.out.println("sending...");
+				Transport.send(message);
+				System.out.println("Sent message successfully....");
+			} catch (MessagingException mex) {
+				mex.printStackTrace();
+			}
 			
 		}
 
