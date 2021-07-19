@@ -309,7 +309,7 @@ public class CommCalc {
 				// v v Code for monthly running total of commissions earned
 				String linecontent = Files.readAllLines(Paths.get("totalcommissions.txt")).get(0);
 				double commofline = Double.parseDouble(linecontent);
-				double commadd = commofline + (.02 * actual * .7);
+				double commadd = commofline + comm;
 				bwcomm = new BufferedWriter(new FileWriter("totalcommissions.txt"));
 				bwcomm.write(String.valueOf(commadd));
 				bwcomm.flush();
@@ -327,7 +327,7 @@ public class CommCalc {
 				// v v Code for yearly running total commissions earned
 				String yearlylinecontent = Files.readAllLines(Paths.get("totalyearlycommissions.txt")).get(0);
 				double yearlycommofline = Double.parseDouble(yearlylinecontent);
-				double yearlycommadd = yearlycommofline + (.02 * actual * .7);
+				double yearlycommadd = yearlycommofline + comm;
 				bwcomm = new BufferedWriter(new FileWriter("totalyearlycommissions.txt"));
 				bwcomm.write(String.valueOf(yearlycommadd));
 				bwcomm.flush();
@@ -336,7 +336,7 @@ public class CommCalc {
 				// v v Code for yearly running total SALES earned
 				String yearlySALESlinecontent = Files.readAllLines(Paths.get("totalyearlysales.txt")).get(0);
 				double yearlySALESofline = Double.parseDouble(yearlySALESlinecontent);
-				double yearlySALESadd = yearlySALESofline + (.02 * actual * .7);
+				double yearlySALESadd = yearlySALESofline + actual;
 				bwcomm = new BufferedWriter(new FileWriter("totalyearlycommissions.txt"));
 				bwcomm.write(String.valueOf(yearlySALESadd));
 				bwcomm.flush();
