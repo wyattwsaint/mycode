@@ -183,7 +183,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + ". Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
@@ -292,7 +292,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + ". Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
@@ -399,7 +399,7 @@ public class CommCalc {
 					message.setSubject("SOLD!!");
 	
 					message.setText(String.valueOf(commish + of + bookprice + soldfor + actualprice + creddesc + credit
-							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + "Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
+							+ totalmonthlycomm + commadd + totalmonthlysales + amountadd + ". Monthly closing rate: " + (soldadd / apptsadd * 100) + "%"));
 	
 					System.out.println("sending...");
 					Transport.send(message);
