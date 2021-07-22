@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Properties;
 
@@ -24,7 +26,7 @@ public class CommCalc {
 		BufferedWriter bwcomm = null;
 		BufferedWriter bwsold = null;
 		BufferedWriter bwappt = null;
-
+		
 		System.out.println("Sold? (y or n)");
 		String soldornot = scanner.nextLine();
 		
@@ -40,8 +42,12 @@ public class CommCalc {
 			String product = scanner.nextLine();
 			System.out.println("Comments: ");
 			String comments = scanner.nextLine();
+			
 			System.out.println("Date: ");
-			String date = scanner.nextLine();
+			SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+			Date date = new Date(System.currentTimeMillis());
+			System.out.println(formatter.format(date));
+					
 			System.out.println("Credit status: ");
 			String credstat = scanner.nextLine();
 			
@@ -69,7 +75,7 @@ public class CommCalc {
 			bw.newLine();
 			bw.write(comments);
 			bw.newLine();
-			bw.write(date);
+			bw.write(formatter.format(date));
 			bw.newLine();
 			bw.flush();
 			bw.close();
