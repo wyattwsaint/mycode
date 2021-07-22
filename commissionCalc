@@ -26,6 +26,7 @@ public class CommCalc {
 		BufferedWriter bwcomm = null;
 		BufferedWriter bwsold = null;
 		BufferedWriter bwappt = null;
+		BufferedWriter bwbonus = null;
 		
 		System.out.println("Sold? (y or n)");
 		String soldornot = scanner.nextLine();
@@ -113,7 +114,27 @@ public class CommCalc {
 				bwcomm.write(String.valueOf(amountadd));
 				bwcomm.flush();
 				System.out.println("Total MONTHLY sales: " + amountadd);
-				
+					if (amountadd < 60000) {
+						if (amountadd >= 70000) {
+							if (amountadd >= 60000) {
+								bwbonus = new BufferedWriter(new FileWriter("monthlybonus.txt"));
+								String bonus = "??????";
+								bwbonus = write(String.valueOf(bonus));
+								bwbonus.flush();
+								bwbonus.close();
+							}
+							bwbonus = new BufferedWriter(new FileWriter("monthlybonus.txt"));
+							String bonus = "??????";
+							bwbonus = write(String.valueOf(bonus));
+							bwbonus.flush();
+							bwbonus.close();
+						}
+						bwbonus = new BufferedWriter(new FileWriter("monthlybonus.txt"));
+						String bonus = "No bonus";
+						bwbonus = write(String.valueOf(bonus));
+						bwbonus.flush();
+						bwbonus.close();
+					}
 				// v v Code for yearly running total commissions earned
 				String yearlylinecontent = Files.readAllLines(Paths.get("totalyearlycommissions.txt")).get(0);
 				double yearlycommofline = Double.parseDouble(yearlylinecontent);
@@ -479,6 +500,11 @@ public class CommCalc {
 			
 		}
 
+	}
+
+	private static BufferedWriter write(String valueOf) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
