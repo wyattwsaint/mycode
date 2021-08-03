@@ -1,0 +1,37 @@
+package webScraper.webScraper;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+
+public class App {
+	
+	public static void main(String[] args) throws IOException {
+		String webPage = "https://www.breitbart.com";
+        String html = Jsoup.connect(webPage).get().html();
+        Document document = Jsoup.parse(html);
+        Elements links = document.select("a[href]");
+
+        String webPage1 = "https://www.theepochtimes.com";
+        String html1 = Jsoup.connect(webPage1).get().html();
+        Document document1 = Jsoup.parse(html1);
+        Elements links1 = document1.select("a[href]");
+
+        
+        System.out.println(links);
+        FileWriter fw = new FileWriter("searchresults.txt");
+        fw.write(links.toString());
+        fw.close();
+        
+        System.out.println(links1);
+        FileWriter fw1 = new FileWriter("searchresults.txt", true);
+        fw1.write(links1.toString());
+        fw1.close();
+	}
+}
