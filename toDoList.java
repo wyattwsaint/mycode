@@ -1,7 +1,12 @@
 package sandbox;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class sandbox {
@@ -9,14 +14,13 @@ public class sandbox {
 	public static void main(String[] args) throws Exception {
 	
 		
-		//Use a while loop???
-		System.out.println("Press \"a\" then \"Enter\" to add a task, or \"a\" then \"Enter\" to cross off a task.");
+		System.out.println("Press \"a\" then \"Enter\" to add a task, or \"c\" then \"Enter\" to cross off a task.");
 		Scanner scanner = new Scanner(System.in);
 		String addOrCrossOff = scanner.next();
-		if (addOrCrossOff == "a") {
+		if (addOrCrossOff.equals("a")) {
 			taskDataEntry();
 		}
-		else if (addOrCrossOff == "c") {
+		else if (addOrCrossOff.equals("c")) {
 			crossTasksOffTheList();
 		}
 		else {
@@ -28,19 +32,37 @@ public class sandbox {
 	public static void taskDataEntry() throws Exception {
 		System.out.println("Enter task to accomplish: ");
 		Scanner scanner = new Scanner(System.in);
-		String enteredTask = scanner.next();
-		scanner.close();
+		String enteredTask = scanner.nextLine();
+		File myFile = new File("taskList.txt");
+		Scanner readFile = new Scanner(myFile);
 		BufferedWriter bw = new BufferedWriter(new FileWriter("taskList.txt", true));
-		bw.write(String.valueOf(enteredTask));
+		bw.write(enteredTask);
 		bw.newLine();
-		bw.flush();
 		bw.close();
+		
+		int lineNumber = 1;
+		while (readFile.hasNext()) {
+			String data = readFile.nextLine();
+			System.out.println(lineNumber + ". " + data);
+			lineNumber++;
+		}
+		
+		
 	}
 
 	public static void crossTasksOffTheList() throws Exception {
 		System.out.println("Enter task to cross off: ");
 		Scanner scanner = new Scanner(System.in);
-		String crossedOffTask = scanner.next();
+		String taskToCrossOff = scanner.next();
+		
+		File myFile = new File("taskList.txt");
+		Scanner readFile = new Scanner(myFile);
+		int lineNumber = 1;
+		while (readFile.hasNext()) {
+			String data = readFile.nextLine();
+			System.out.println(lineNumber + ". " + data);
+			lineNumber++;
+		}
 	}
 
 	public static void addOrCrossOffTasksDecision() throws Exception {
