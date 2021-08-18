@@ -33,21 +33,21 @@ public class sandbox {
 		System.out.println("Enter task to accomplish: ");
 		Scanner scanner = new Scanner(System.in);
 		String enteredTask = scanner.nextLine();
-		File myFile = new File("taskList.txt");
-		Scanner readFile = new Scanner(myFile);
+		
+		
 		BufferedWriter bw = new BufferedWriter(new FileWriter("taskList.txt", true));
 		bw.write(enteredTask);
 		bw.newLine();
 		bw.close();
 		
+		File myFile = new File("taskList.txt");
+		Scanner readFile = new Scanner(myFile);
 		int lineNumber = 1;
-		while (readFile.hasNext()) {
+		while (readFile.nextLine() != null) {
 			String data = readFile.nextLine();
 			System.out.println(lineNumber + ". " + data);
 			lineNumber++;
 		}
-		
-		
 	}
 
 	public static void crossTasksOffTheList() throws Exception {
