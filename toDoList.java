@@ -1,4 +1,4 @@
-package sandbox;
+package toDoList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Scanner;
 
-public class sandbox {
+public class toDoList {
 
 	public static void main(String[] args) throws IOException {
 
@@ -28,6 +28,7 @@ public class sandbox {
 				break;
 			} else if (choice.equals("d")) {
 				deleteTask();
+				copyTempToTaskList();
 			}
 		}
 	}
@@ -41,6 +42,7 @@ public class sandbox {
 		bw.newLine();
 		bw.close();
 		printTodoListToTerminal();
+		scanner.close();
 	}
 
 	public static void printTodoListToTerminal() throws IOException {
@@ -50,7 +52,6 @@ public class sandbox {
 			System.out.println(st);
 			st = br.readLine();
 		}
-		br.close();
 	}
 
 	public static void deleteTask() throws IOException {
@@ -71,6 +72,10 @@ public class sandbox {
 				System.out.println("Deleted " + line);
 			}
 		}
+	
+	}
+	
+	public static void copyTempToTaskList() throws IOException {
 		InputStream is = null;
 		OutputStream os = null;
 		is = new FileInputStream("temp.txt");
