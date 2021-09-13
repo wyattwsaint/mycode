@@ -1,23 +1,52 @@
 package webScraper.webScraper;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-
 public class App {
-	
-	public static void main(String[] args) throws IOException {
 
-        String webPage1 = "https://www.theepochtimes.com";
-        String html1 = Jsoup.connect(webPage1).get().html();
-        Document document1 = Jsoup.parse(html1);
-        Elements links1 = document1.select("a[href]");
-        FileWriter fw1 = new FileWriter("searchresults.txt");
-        fw1.write(links1.toString());
-        fw1.close();
-        System.out.println(links1);
+	public static void main(String[] args) {
+		
+		try {
+			String url = "https://www.health.pa.gov/topics/disease/coronavirus/Pages/Cases.aspx";
+			Document doc = Jsoup.connect(url).get();
+			Elements info = doc.getElementsByTag("strong");
+			
+			FileWriter fw = new FileWriter("data");
+			fw.write(info.toString());
+			fw.close();
+			
+			String caseCount = Files.readAllLines(Paths.get("data")).get(2);
+			
+			String caseCount1 = caseCount.replaceFirst("<strong>", "");
+			String caseCount2 = caseCount1.substring(0, caseCount1.length()-9);
+			String caseCount3 = caseCount2.replaceAll(",", "");
+			
+			System.out.println(caseCount3);
+			
+			int actualCaseCount = Integer.parseInt(caseCount3.toString());
+
+			System.out.println(actualCaseCount);
+			
+			String oldCaseCount = Files.readAllLines(Paths.get("caseCountFile")).get(0);
+			int newOldCaseCount = Integer.valueOf(oldCaseCount.toString());
+			
+			BufferedWriter bw = new BufferedWriter(new FileWriter("caseCountFile"));
+			bw.write(actualCaseCount);
+			bw.flush();
+			
+			System.out.println(actualCaseCount - newOldCaseCount);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
