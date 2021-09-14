@@ -18,6 +18,7 @@ public class toDoList {
 		BufferedReader bchoice = new BufferedReader(new FileReader("taskList.txt"));
 
 		while (bchoice.readLine() != null) {
+			
 			System.out.println("Press e to enter a task, press q to quit/print list, or press d to delete a task");
 			Scanner scanner = new Scanner(System.in);
 			String choice = scanner.nextLine();
@@ -40,9 +41,8 @@ public class toDoList {
 		BufferedWriter bw = new BufferedWriter(new FileWriter("taskList.txt", true));
 		bw.write(task);
 		bw.newLine();
-		bw.close();
+		bw.flush();
 		printTodoListToTerminal();
-		scanner.close();
 	}
 
 	public static void printTodoListToTerminal() throws IOException {
