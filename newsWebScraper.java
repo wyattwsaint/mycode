@@ -28,20 +28,25 @@ public class App {
 			String caseCount2 = caseCount1.substring(0, caseCount1.length()-9);
 			String caseCount3 = caseCount2.replaceAll(",", "");
 			
-			System.out.println(caseCount3);
-			
 			int actualCaseCount = Integer.parseInt(caseCount3.toString());
 
-			System.out.println(actualCaseCount);
 			
 			String oldCaseCount = Files.readAllLines(Paths.get("caseCountFile")).get(0);
 			int newOldCaseCount = Integer.valueOf(oldCaseCount.toString());
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter("caseCountFile"));
-			bw.write(actualCaseCount);
+			bw.write(caseCount3);
 			bw.flush();
 			
-			System.out.println(actualCaseCount - newOldCaseCount);
+			int caseTrend = actualCaseCount - newOldCaseCount;
+			
+			BufferedWriter caseTrends = new BufferedWriter(new FileWriter("caseTrendFile"));
+			caseTrends.write(new Integer(caseTrend).toString());
+			caseTrends.newLine();
+			caseTrends.flush();
+			caseTrends.close();
+			
+			System.out.println(caseTrend);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
