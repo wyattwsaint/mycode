@@ -40,7 +40,7 @@ public class App {
 			
 			int caseTrend = actualCaseCount - newOldCaseCount;
 			
-			BufferedWriter caseTrends = new BufferedWriter(new FileWriter("caseTrendFile"));
+			BufferedWriter caseTrends = new BufferedWriter(new FileWriter("caseTrendFile", true));
 			caseTrends.write(new Integer(caseTrend).toString());
 			caseTrends.newLine();
 			caseTrends.flush();
