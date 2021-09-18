@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -40,9 +43,17 @@ public class App {
 			
 			int caseTrend = actualCaseCount - newOldCaseCount;
 			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+			LocalDateTime now = LocalDateTime.now();
+			String dateTime = dtf.format(now);
+			
 			BufferedWriter caseTrends = new BufferedWriter(new FileWriter("caseTrendFile", true));
+			caseTrends.newLine();
 			caseTrends.write(new Integer(caseTrend).toString());
 			caseTrends.newLine();
+			caseTrends.write(dateTime);
+			caseTrends.newLine();
+			caseTrends.write("------");
 			caseTrends.flush();
 			caseTrends.close();
 			
