@@ -16,10 +16,15 @@ public class readPDF {
 
 	public static void main(String[] args) throws IOException {
 		
-		aspenHomeImprovements();
-		military();
-		amazonMarketplace();
-		progressFitness();
+		//aspenHomeImprovements();
+		//military();
+		//amazonMarketplace();
+		//progressFitness();
+		//americanFunds();
+		//usaa();
+		//tithely();
+		//hondaOdysseyLoanPayment();
+		wawaPurchases();
 		
 	}
 
@@ -197,4 +202,223 @@ public class readPDF {
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
 	}
+	static void americanFunds() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "ACH WITHDRAWAL AMERICAN FUNDS INVESTMENT";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber + 2;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(2).trim();
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
+
+				String stringOfAdd = Integer.toString(add);
+
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(stringOfAdd);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		
+	}
+	
+	static void usaa() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "ACH WITHDRAWAL USAA P&C EXT AUTOPAY";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber - 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(2).trim();
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
+
+				String stringOfAdd = Integer.toString(add);
+
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(stringOfAdd);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		
+	}
+	
+	static void tithely() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "ACH WITHDRAWAL TITHE.LY TITHE.LY  WYATT MANDY SAINT";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber - 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
+				String stringOfAdd = Integer.toString(add);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(stringOfAdd);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+	}
+	
+	static void hondaOdysseyLoanPayment() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "HOME BANKING WITHDRAWAL TRANSFER TO LOAN 0004";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber - 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
+				String stringOfAdd = Integer.toString(add);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(stringOfAdd);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		
+	}
+	
+	static void wawaPurchases() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "WAWA";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber + 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
+				String stringOfAdd = Integer.toString(add);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(stringOfAdd);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		
+	}
+	
+	
 }
