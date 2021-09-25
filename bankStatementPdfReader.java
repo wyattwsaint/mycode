@@ -2,6 +2,7 @@ package readPDF;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,8 +10,14 @@ import java.io.LineNumberReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.text.PDFTextStripper;
+
 
 public class readPDF {
 
@@ -24,7 +31,11 @@ public class readPDF {
 		//usaa();
 		//tithely();
 		//hondaOdysseyLoanPayment();
-		wawaPurchases();
+		//wawaPurchases();
+		//amazon();
+		//dunkinDonuts();
+		//primeVideo_WithDate();
+		trashService();
 		
 	}
 
@@ -70,6 +81,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 	}
 	
 	static void military() throws NumberFormatException, IOException {
@@ -114,6 +126,7 @@ public class readPDF {
 		transBw.write("0");
 		transBw.flush();
 		System.out.println(aspenAddUp);
+		transBw.close();
 	}
 	static void amazonMarketplace() throws IOException {
 		
@@ -157,6 +170,7 @@ public class readPDF {
 		transBw.write("0");
 		transBw.flush();
 		System.out.println(aspenAddUp);
+		transBw.close();
 	}
 	
 	static void progressFitness() throws IOException {
@@ -201,6 +215,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 	}
 	static void americanFunds() throws IOException {
 		
@@ -225,12 +240,11 @@ public class readPDF {
 				String data3 = data2[1].replaceAll(",", "").substring(2).trim();
 				String data4 = data3.substring(0, data3.length() - 3);
 				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
-				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
-
-				String stringOfAdd = Integer.toString(add);
-
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
 				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
-				aspenBw.write(stringOfAdd);
+				aspenBw.write(roundUpToString);
 				aspenBw.flush();
 				aspenBw.newLine();
 
@@ -244,6 +258,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 		
 	}
 	
@@ -270,12 +285,11 @@ public class readPDF {
 				String data3 = data2[1].replaceAll(",", "").substring(2).trim();
 				String data4 = data3.substring(0, data3.length() - 3);
 				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
-				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
-
-				String stringOfAdd = Integer.toString(add);
-
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
 				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
-				aspenBw.write(stringOfAdd);
+				aspenBw.write(roundUpToString);
 				aspenBw.flush();
 				aspenBw.newLine();
 
@@ -289,6 +303,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 		
 	}
 	
@@ -315,10 +330,11 @@ public class readPDF {
 				String data3 = data2[1].replaceAll(",", "").substring(3);
 				String data4 = data3.substring(0, data3.length() - 3);
 				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
-				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
-				String stringOfAdd = Integer.toString(add);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
 				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
-				aspenBw.write(stringOfAdd);
+				aspenBw.write(roundUpToString);
 				aspenBw.flush();
 				aspenBw.newLine();
 
@@ -332,6 +348,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 	}
 	
 	static void hondaOdysseyLoanPayment() throws IOException {
@@ -357,10 +374,11 @@ public class readPDF {
 				String data3 = data2[1].replaceAll(",", "").substring(3);
 				String data4 = data3.substring(0, data3.length() - 3);
 				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
-				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
-				String stringOfAdd = Integer.toString(add);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
 				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
-				aspenBw.write(stringOfAdd);
+				aspenBw.write(roundUpToString);
 				aspenBw.flush();
 				aspenBw.newLine();
 
@@ -374,6 +392,7 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 		
 	}
 	
@@ -400,10 +419,11 @@ public class readPDF {
 				String data3 = data2[1].replaceAll(",", "").substring(3);
 				String data4 = data3.substring(0, data3.length() - 3);
 				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
-				int add = Integer.valueOf(data4) + Integer.valueOf(aspenAddUp);
-				String stringOfAdd = Integer.toString(add);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
 				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
-				aspenBw.write(stringOfAdd);
+				aspenBw.write(roundUpToString);
 				aspenBw.flush();
 				aspenBw.newLine();
 
@@ -417,8 +437,196 @@ public class readPDF {
 		aspenBw.write("0");
 		aspenBw.flush();
 		System.out.println(aspenAddUp);
+		aspenBw.close();
 		
 	}
 	
+	static void amazon() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "POS CARD PURCHASE AMAZON.COM";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber + 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(roundUpToString);
+				aspenBw.flush();
+				aspenBw.newLine();
+				
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		aspenBw.close();
+		
+	}
+	
+	static void dunkinDonuts() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "DEBIT CARD PURCHASE DUNKIN";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber + 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(roundUpToString);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		aspenBw.close();
+	}
+	
+	static void primeVideo_WithDate() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "PRIME VIDEO";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber() - 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(lineNumber);
+				String input = data;
+				String regex = " (\\D\\d{2}/\\d{2}/\\d{4}\\D) ";
+				Matcher m = Pattern.compile(regex).matcher(input);
+				if (m.find()) {
+					int newLineNumber = lineNumber + 2;
+					String newData = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+					String[] data2 = newData.split("/", 2);
+					String data3 = data2[1].replaceAll(",", "").substring(3);
+					String data4 = data3.substring(0, data3.length() - 3);
+					String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+					double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+					double roundUp = Math.ceil(add);
+					String roundUpToString = Double.toString(roundUp);
+					BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+					aspenBw.write(roundUpToString);
+					aspenBw.flush();
+					aspenBw.newLine();
+				}
+				else if (!m.find()) {
+					continue;
+				}
+				
+			} else {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		aspenBw.close();
+	}
+	
+	static void trashService() throws IOException {
+		
+		File file = new File("C:\\Users\\wmsai\\Desktop\\BankStatement.pdf");
+		PDFTextStripper stripper = new PDFTextStripper();
+		BufferedWriter bw = new BufferedWriter(new FileWriter("bankData", StandardCharsets.UTF_8));
+		String pdfText = stripper.getText(Loader.loadPDF(file)).toUpperCase();
+
+		bw.write(pdfText);
+		bw.flush();
+		bw.close();
+
+		LineNumberReader lineNum = new LineNumberReader(new FileReader("bankData"));
+		String transactionName = "ACH WITHDRAWAL PENN WASTE";
+		String line;
+		while ((line = lineNum.readLine()) != null) {
+			if (line.contains(transactionName)) {
+				int lineNumber = lineNum.getLineNumber();
+				int newLineNumber = lineNumber - 1;
+				String data = Files.readAllLines(Paths.get("bankData")).get(newLineNumber);
+				String[] data2 = data.split("/", 2);
+				String data3 = data2[1].replaceAll(",", "").substring(3);
+				String data4 = data3.substring(0, data3.length() - 3);
+				String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+				double add = Double.valueOf(data4) + Double.valueOf(aspenAddUp);
+				double roundUp = Math.ceil(add);
+				String roundUpToString = Double.toString(roundUp);
+				BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+				aspenBw.write(roundUpToString);
+				aspenBw.flush();
+				aspenBw.newLine();
+
+			} else if (!line.contains(transactionName)) {
+				continue;
+			}
+
+		}
+		String aspenAddUp = Files.readAllLines(Paths.get("temp.txt")).get(0);
+		BufferedWriter aspenBw = new BufferedWriter(new FileWriter("temp.txt"));
+		aspenBw.write("0");
+		aspenBw.flush();
+		System.out.println(aspenAddUp);
+		aspenBw.close();
+		
+	}
 	
 }
