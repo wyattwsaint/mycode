@@ -33,22 +33,19 @@ public class lineParser {
 		bw.flush();
 		bw.close();
 
-		
-        
 		HashMap<String, String> hashMap = new HashMap<>();
 		HashMap<String, String> hashMap2 = new HashMap<>();
 
-
 		BufferedReader preHash = new BufferedReader(new FileReader("hashMap"));
 		String hashLine = null;
-        while ((hashLine = preHash.readLine()) != null) {
-            String[] parts = hashLine.split(":");
-            String name = parts[0].trim();
-            String number = parts[1].trim();
-            if (!name.equals("") && !number.equals(""))
-                hashMap.put(name, number);
-        }
-		
+		while ((hashLine = preHash.readLine()) != null) {
+			String[] parts = hashLine.split(":");
+			String name = parts[0].trim();
+			String number = parts[1].trim();
+			if (!name.equals("") && !number.equals(""))
+				hashMap.put(name, number);
+		}
+
 		Scanner scanner = new Scanner(System.in);
 		BufferedWriter hash = new BufferedWriter(new FileWriter("hashMap"));
 		BufferedWriter clearData = new BufferedWriter(new FileWriter("csvFile"));
@@ -79,19 +76,15 @@ public class lineParser {
 						String[] trans10 = transNamePlusPrice.split("/", 4);
 						String trans11 = trans10[0];
 						String trans12 = trans11 + dashes;
-						
-				            
-						
+
 						String trans13 = trans12.substring(0, 40);
 						String trans14 = trans10[3].substring(0);
 
-						//System.out.println(trans13);
-						//System.out.println("Enter category");
-						//hashMap.put(trans13, "misc");
+						// System.out.println(trans13);
+						// System.out.println("Enter category");
+						// hashMap.put(trans13, "misc");
 						String category = hashMap.get(trans13);
 						hashMap2.put(trans13, category);
-						
-						
 
 						csvFile.write(category + "," + trans13 + "," + trans14);
 						csvFile.newLine();
@@ -100,7 +93,7 @@ public class lineParser {
 						priceTemp.newLine();
 						priceTemp.flush();
 						continue;
-						
+
 					} else if (m2.find()) {
 						String dashes = "------------------------------------------------------------";
 						String[] tran = transNamePlusPrice.split("/", 3);
@@ -109,12 +102,12 @@ public class lineParser {
 						String tran3 = tran2.substring(0, 40);
 						String tran4 = tran[2].substring(0);
 
-						//System.out.println(tran3);
-						//System.out.println("Enter category");
-						//hashMap.put(tran3, "misc");
+						// System.out.println(tran3);
+						// System.out.println("Enter category");
+						// hashMap.put(tran3, "misc");
 						String category = hashMap.get(tran3);
 						hashMap2.put(tran3, category);
-						
+
 						csvFile.write(category + "," + tran3 + "," + tran4);
 						csvFile.newLine();
 						csvFile.flush();
@@ -122,7 +115,7 @@ public class lineParser {
 						priceTemp.newLine();
 						priceTemp.flush();
 						continue;
-						
+
 					} else if (!m1.find()) {
 						String dashes = "------------------------------------------------------------";
 						String[] trans1 = transNamePlusPrice.split("/", 2);
@@ -131,10 +124,10 @@ public class lineParser {
 						String trans4 = trans3.substring(0, 40);
 						String trans5 = trans1[1].substring(0);
 
-						//System.out.println(trans4);
-						//System.out.println("Enter category");
-						
-						//hashMap.put(trans4, "misc");
+						// System.out.println(trans4);
+						// System.out.println("Enter category");
+
+						// hashMap.put(trans4, "misc");
 						String category = hashMap.get(trans4);
 						hashMap2.put(trans4, category);
 
@@ -165,10 +158,9 @@ public class lineParser {
 
 							// System.out.println(data33);
 							// System.out.println("Enter category");
-							//hashMap.put(data33, "misc");
+							// hashMap.put(data33, "misc");
 							String category = hashMap.get(data33);
 							hashMap2.put(data33, category);
-							
 
 							priceTemp.write(priceLine);
 							priceTemp.newLine();
