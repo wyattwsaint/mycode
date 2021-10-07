@@ -170,7 +170,6 @@ public class lineParser {
 							csvFile.flush();
 							break;
 						} else if (!m2.find()) {
-							System.out.println(line);
 							continue;
 						}
 					}
