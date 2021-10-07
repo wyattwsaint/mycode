@@ -170,11 +170,14 @@ public class lineParser {
 							csvFile.flush();
 							break;
 						} else if (!m2.find()) {
+							System.out.println(line);
 							continue;
 						}
 					}
 
-				} else if (data2 == false) {
+				} 
+				
+				else if (data2 == false) {
 					continue;
 				}
 
@@ -188,6 +191,5 @@ public class lineParser {
 			hash.newLine();
 			hash.flush();
 		}
-		System.out.println(hashMap2);
 	}
 }
